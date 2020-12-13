@@ -2,8 +2,7 @@ FROM golang:alpine3.11 AS builder
 WORKDIR /github.com/tjhorner/schema.tl
 RUN apk --no-cache --no-progress add --virtual \
   build-deps \
-  build-base \
-  git
+  build-base
 COPY . .
 RUN make build
 
