@@ -8,6 +8,6 @@ RUN make build
 
 FROM golang:alpine3.11
 WORKDIR /app
-COPY --from=builder /github.com/tjhorner/schema.tl/schema-tl .
+COPY --from=builder /github.com/tjhorner/schema.tl/tl-explorer .
 EXPOSE 8080
-ENTRYPOINT ["/app/schema-tl"]
+ENTRYPOINT ["/app/tl-explorer"]

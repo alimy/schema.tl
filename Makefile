@@ -1,6 +1,6 @@
 GOFMT ?= gofmt -s -w
 
-TARGET = schema-tl
+TARGET = tl-explorer
 RELEASE_ROOT = release
 RELEASE_LINUX_AMD64 = $(RELEASE_ROOT)/linux-amd64/$(TARGET)
 RELEASE_DARWIN_AMD64 = $(RELEASE_ROOT)/darwin-amd64/$(TARGET)
