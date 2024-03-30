@@ -1,1 +1,0 @@
-PDF document image. MIME type: application/pdf.

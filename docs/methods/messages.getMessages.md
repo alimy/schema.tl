@@ -1,1 +1,0 @@
-Returns the list of messages by their IDs.

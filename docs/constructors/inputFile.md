@@ -1,1 +1,0 @@
-Defines a file saved in parts using the method upload.saveFilePart.

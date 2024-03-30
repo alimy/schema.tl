@@ -1,1 +1,0 @@
-Returns chat basic info on their IDs.

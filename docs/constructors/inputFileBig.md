@@ -1,1 +1,0 @@
-Assigns a big file (over 10Mb in size), saved in part using the method upload.saveBigFilePart.

@@ -1,1 +1,0 @@
-Returns data for copying authorization to another data-centre.

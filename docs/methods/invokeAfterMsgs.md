@@ -1,1 +1,0 @@
-Invokes a query after a successfull completion of previous queries

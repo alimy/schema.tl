@@ -1,1 +1,0 @@
-Sends a service message to a secret chat.

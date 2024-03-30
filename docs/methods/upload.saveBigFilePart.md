@@ -1,1 +1,0 @@
-Saves a part of a large file (over 10Mb in size) to be later passed to one of the methods.

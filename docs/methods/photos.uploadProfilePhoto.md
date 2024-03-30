@@ -1,1 +1,0 @@
-Updates current user profile photo.

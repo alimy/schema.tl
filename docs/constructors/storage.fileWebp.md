@@ -1,1 +1,0 @@
-WEBP image. MIME type: image/webp.

@@ -1,1 +1,0 @@
-Chat waiting for approval of second participant.

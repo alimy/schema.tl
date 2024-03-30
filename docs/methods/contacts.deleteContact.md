@@ -1,1 +1,0 @@
-Deletes a contact from the list.

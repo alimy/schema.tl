@@ -1,1 +1,0 @@
-Confirms creation of a secret chat

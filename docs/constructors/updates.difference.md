@@ -1,1 +1,0 @@
-Full list of occurred events.

@@ -1,1 +1,0 @@
-An empty constructor, no user or chat is defined.

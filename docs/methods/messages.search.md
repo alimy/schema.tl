@@ -1,1 +1,0 @@
-Returns search messages.

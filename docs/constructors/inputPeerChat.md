@@ -1,1 +1,0 @@
-Defines a chat for further interaction.

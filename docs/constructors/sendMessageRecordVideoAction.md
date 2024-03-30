@@ -1,1 +1,0 @@
-User is recording a video.

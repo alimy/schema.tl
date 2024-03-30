@@ -1,1 +1,0 @@
-One-color background wallpaper (no image).

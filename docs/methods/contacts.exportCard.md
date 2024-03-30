@@ -1,1 +1,0 @@
-Returns the current user's card that can be later used to contact a Telegram user without knowing his phone number.

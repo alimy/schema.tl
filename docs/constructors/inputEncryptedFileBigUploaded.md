@@ -1,1 +1,0 @@
-Assigns a new big encrypted file (over 10Mb in size), saved in parts using the method upload.saveBigFilePart.

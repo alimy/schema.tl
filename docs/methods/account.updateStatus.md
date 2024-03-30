@@ -1,1 +1,0 @@
-Updates online user status.

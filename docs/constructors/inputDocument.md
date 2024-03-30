@@ -1,1 +1,0 @@
-Defines a video for subsequent interaction.

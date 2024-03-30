@@ -1,1 +1,0 @@
-Returns users found by username substring.

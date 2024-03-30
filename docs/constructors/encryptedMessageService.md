@@ -1,1 +1,0 @@
-Encrypted service message

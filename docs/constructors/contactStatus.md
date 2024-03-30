@@ -1,1 +1,0 @@
-Contact status: online / offline.

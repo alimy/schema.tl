@@ -1,1 +1,0 @@
-Shortened constructor containing info on one update not requiring auxiliary data

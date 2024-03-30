@@ -1,1 +1,0 @@
-Deletes a device by its token, stops sending PUSH-notifications to it.

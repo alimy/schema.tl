@@ -1,1 +1,0 @@
-Returns full chat info according to its ID.

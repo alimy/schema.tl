@@ -1,1 +1,0 @@
-Saves logs of application on the server.

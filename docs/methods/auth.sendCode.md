@@ -1,1 +1,0 @@
-Sends an  confirmation code message to the specified phone number via SMS.

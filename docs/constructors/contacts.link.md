@@ -1,1 +1,0 @@
-Connections between a certain user and the current one.

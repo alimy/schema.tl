@@ -1,1 +1,0 @@
-Contains user authorization info.

@@ -1,1 +1,0 @@
-Online status of the user.

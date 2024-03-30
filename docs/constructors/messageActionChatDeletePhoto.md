@@ -1,1 +1,0 @@
-Group profile photo removed.

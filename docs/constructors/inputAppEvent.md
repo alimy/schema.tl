@@ -1,1 +1,0 @@
-Event that occured in the application.

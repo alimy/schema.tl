@@ -1,1 +1,0 @@
-Saves information that the current user sent SMS-messages with invitations to its unregistered contacts.

@@ -1,1 +1,0 @@
-Returns diffetence between the current state of updates and transmitted.

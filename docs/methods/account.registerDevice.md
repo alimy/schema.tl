@@ -1,1 +1,0 @@
-Registers a device to send it PUSH-notifications in the future.

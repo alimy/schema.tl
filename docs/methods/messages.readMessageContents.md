@@ -1,1 +1,0 @@
-Notifies the sender about the recipient having listened a voice message or watched a video.

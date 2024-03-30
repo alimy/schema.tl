@@ -1,1 +1,0 @@
-Contains info on an SMS message with a confirmation code that was sent.

@@ -1,1 +1,0 @@
-Change of contact's profile photo.

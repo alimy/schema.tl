@@ -1,1 +1,0 @@
-Composition of chat participants changed.

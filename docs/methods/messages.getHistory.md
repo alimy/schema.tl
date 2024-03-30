@@ -1,1 +1,0 @@
-Returns message history for a chat.

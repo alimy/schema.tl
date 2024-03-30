@@ -1,1 +1,0 @@
-Changes chat photo and sends a service message on it

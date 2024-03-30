@@ -1,1 +1,0 @@
-Empty constructor, non-existent message.

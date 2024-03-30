@@ -1,1 +1,0 @@
-Profile photo has not been set.

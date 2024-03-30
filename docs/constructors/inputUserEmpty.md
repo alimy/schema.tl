@@ -1,1 +1,0 @@
-Empty constructor, does not define a user.

@@ -1,1 +1,0 @@
-No updates are available for the application.

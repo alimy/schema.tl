@@ -1,1 +1,0 @@
-Validates a username and checks availability.

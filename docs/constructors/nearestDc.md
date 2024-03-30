@@ -1,1 +1,0 @@
-Nearest data centre, according to geo-ip.

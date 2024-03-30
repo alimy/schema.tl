@@ -1,1 +1,0 @@
-Changes in the data center configuration options.

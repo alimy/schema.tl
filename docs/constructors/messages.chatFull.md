@@ -1,1 +1,0 @@
-Extenden info on chat and auxiliary data.

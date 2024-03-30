@@ -1,1 +1,0 @@
-Resets all notification settings from users and groups.

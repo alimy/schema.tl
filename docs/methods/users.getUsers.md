@@ -1,1 +1,0 @@
-Returns basic user info according to their identifiers.

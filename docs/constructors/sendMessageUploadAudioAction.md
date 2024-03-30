@@ -1,1 +1,0 @@
-User is uploading a voice message.

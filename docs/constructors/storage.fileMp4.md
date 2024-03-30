@@ -1,1 +1,0 @@
-MPEG-4 video. MIME type: video/mp4.

@@ -1,1 +1,0 @@
-Sent message with random_id client identifier was assigned an identifier.

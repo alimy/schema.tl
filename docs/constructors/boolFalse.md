@@ -1,1 +1,0 @@
-Constructor may be interpreted as a boolean false value.

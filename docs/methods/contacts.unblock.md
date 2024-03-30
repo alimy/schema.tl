@@ -1,1 +1,0 @@
-Deletes the user from the blacklist.

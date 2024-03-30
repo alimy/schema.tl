@@ -1,1 +1,0 @@
-Marks message history within a secret chat as read.

@@ -1,1 +1,0 @@
-Location of a regular file.

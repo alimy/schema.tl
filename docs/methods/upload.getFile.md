@@ -1,1 +1,0 @@
-Returns content of a whole file or its part.

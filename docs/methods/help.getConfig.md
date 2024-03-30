@@ -1,1 +1,0 @@
-Returns current configuration, icluding data center configuration.

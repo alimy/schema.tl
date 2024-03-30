@@ -1,1 +1,0 @@
-Detailed group info.

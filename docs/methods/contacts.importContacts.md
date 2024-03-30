@@ -1,1 +1,0 @@
-Imports contacts: saves a full list on the server, adds already registered contacts to the contact list, returns added contacts and their info.
