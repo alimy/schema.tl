@@ -1,4 +1,4 @@
-var LAYER_NUMBER = 176
+var LAYER_NUMBER = 177
 
 var SCHEMA_GLOBAL = {
   "constructors": [
@@ -1171,6 +1171,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags2.10?true"
         },
         {
+          "name": "bot_business",
+          "type": "flags2.11?true"
+        },
+        {
           "name": "id",
           "type": "long"
         },
@@ -1814,6 +1818,14 @@ var SCHEMA_GLOBAL = {
           "type": "flags2.6?true"
         },
         {
+          "name": "restricted_sponsored",
+          "type": "flags2.11?true"
+        },
+        {
+          "name": "can_view_revenue",
+          "type": "flags2.12?true"
+        },
+        {
           "name": "id",
           "type": "long"
         },
@@ -2116,7 +2128,7 @@ var SCHEMA_GLOBAL = {
       "type": "Message"
     },
     {
-      "id": 2792128252,
+      "id": 592953125,
       "predicate": "message",
       "params": [
         {
@@ -2168,6 +2180,14 @@ var SCHEMA_GLOBAL = {
           "type": "flags.27?true"
         },
         {
+          "name": "flags2",
+          "type": "#"
+        },
+        {
+          "name": "offline",
+          "type": "flags2.1?true"
+        },
+        {
           "name": "id",
           "type": "int"
         },
@@ -2194,6 +2214,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "via_bot_id",
           "type": "flags.11?long"
+        },
+        {
+          "name": "via_business_bot_id",
+          "type": "flags2.0?long"
         },
         {
           "name": "reply_to",
@@ -3410,6 +3434,21 @@ var SCHEMA_GLOBAL = {
       "type": "MessageAction"
     },
     {
+      "id": 2477987912,
+      "predicate": "messageActionRequestedPeerSentMe",
+      "params": [
+        {
+          "name": "button_id",
+          "type": "int"
+        },
+        {
+          "name": "peers",
+          "type": "Vector<RequestedPeer>"
+        }
+      ],
+      "type": "MessageAction"
+    },
+    {
       "id": 3582593222,
       "predicate": "dialog",
       "params": [
@@ -3958,7 +3997,7 @@ var SCHEMA_GLOBAL = {
       "type": "PeerNotifySettings"
     },
     {
-      "id": 2769817869,
+      "id": 2899733598,
       "predicate": "peerSettings",
       "params": [
         {
@@ -4002,6 +4041,14 @@ var SCHEMA_GLOBAL = {
           "type": "flags.10?true"
         },
         {
+          "name": "business_bot_paused",
+          "type": "flags.11?true"
+        },
+        {
+          "name": "business_bot_can_reply",
+          "type": "flags.12?true"
+        },
+        {
           "name": "geo_distance",
           "type": "flags.6?int"
         },
@@ -4012,6 +4059,14 @@ var SCHEMA_GLOBAL = {
         {
           "name": "request_chat_date",
           "type": "flags.9?int"
+        },
+        {
+          "name": "business_bot_id",
+          "type": "flags.13?long"
+        },
+        {
+          "name": "business_bot_manage_url",
+          "type": "flags.13?string"
         }
       ],
       "type": "PeerSettings"
@@ -4151,7 +4206,7 @@ var SCHEMA_GLOBAL = {
       "type": "ReportReason"
     },
     {
-      "id": 587153029,
+      "id": 3432609568,
       "predicate": "userFull",
       "params": [
         {
@@ -4305,6 +4360,22 @@ var SCHEMA_GLOBAL = {
         {
           "name": "business_away_message",
           "type": "flags2.3?BusinessAwayMessage"
+        },
+        {
+          "name": "business_intro",
+          "type": "flags2.4?BusinessIntro"
+        },
+        {
+          "name": "birthday",
+          "type": "flags2.5?Birthday"
+        },
+        {
+          "name": "personal_channel_id",
+          "type": "flags2.6?long"
+        },
+        {
+          "name": "personal_channel_message",
+          "type": "flags2.6?int"
         }
       ],
       "type": "UserFull"
@@ -6863,17 +6934,6 @@ var SCHEMA_GLOBAL = {
       "type": "Update"
     },
     {
-      "id": 3438316246,
-      "predicate": "updateGroupInvitePrivacyForbidden",
-      "params": [
-        {
-          "name": "user_id",
-          "type": "long"
-        }
-      ],
-      "type": "Update"
-    },
-    {
       "id": 1974712216,
       "predicate": "updateStory",
       "params": [
@@ -7173,6 +7233,98 @@ var SCHEMA_GLOBAL = {
         {
           "name": "messages",
           "type": "Vector<int>"
+        }
+      ],
+      "type": "Update"
+    },
+    {
+      "id": 2330315130,
+      "predicate": "updateBotBusinessConnect",
+      "params": [
+        {
+          "name": "connection",
+          "type": "BotBusinessConnection"
+        },
+        {
+          "name": "qts",
+          "type": "int"
+        }
+      ],
+      "type": "Update"
+    },
+    {
+      "id": 2648388732,
+      "predicate": "updateBotNewBusinessMessage",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "connection_id",
+          "type": "string"
+        },
+        {
+          "name": "message",
+          "type": "Message"
+        },
+        {
+          "name": "reply_to_message",
+          "type": "flags.0?Message"
+        },
+        {
+          "name": "qts",
+          "type": "int"
+        }
+      ],
+      "type": "Update"
+    },
+    {
+      "id": 132077692,
+      "predicate": "updateBotEditBusinessMessage",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "connection_id",
+          "type": "string"
+        },
+        {
+          "name": "message",
+          "type": "Message"
+        },
+        {
+          "name": "reply_to_message",
+          "type": "flags.0?Message"
+        },
+        {
+          "name": "qts",
+          "type": "int"
+        }
+      ],
+      "type": "Update"
+    },
+    {
+      "id": 2687146030,
+      "predicate": "updateBotDeleteBusinessMessage",
+      "params": [
+        {
+          "name": "connection_id",
+          "type": "string"
+        },
+        {
+          "name": "peer",
+          "type": "Peer"
+        },
+        {
+          "name": "messages",
+          "type": "Vector<int>"
+        },
+        {
+          "name": "qts",
+          "type": "int"
         }
       ],
       "type": "Update"
@@ -8722,6 +8874,12 @@ var SCHEMA_GLOBAL = {
       "type": "InputPrivacyKey"
     },
     {
+      "id": 3596227020,
+      "predicate": "inputPrivacyKeyBirthday",
+      "params": [],
+      "type": "InputPrivacyKey"
+    },
+    {
       "id": 3157175088,
       "predicate": "privacyKeyStatusTimestamp",
       "params": [],
@@ -8778,6 +8936,12 @@ var SCHEMA_GLOBAL = {
     {
       "id": 2760292193,
       "predicate": "privacyKeyAbout",
+      "params": [],
+      "type": "PrivacyKey"
+    },
+    {
+      "id": 536913176,
+      "predicate": "privacyKeyBirthday",
       "params": [],
       "type": "PrivacyKey"
     },
@@ -8856,6 +9020,12 @@ var SCHEMA_GLOBAL = {
       "type": "InputPrivacyRule"
     },
     {
+      "id": 2009975281,
+      "predicate": "inputPrivacyValueAllowPremium",
+      "params": [],
+      "type": "InputPrivacyRule"
+    },
+    {
       "id": 4294843308,
       "predicate": "privacyValueAllowContacts",
       "params": [],
@@ -8926,6 +9096,12 @@ var SCHEMA_GLOBAL = {
     {
       "id": 4159232155,
       "predicate": "privacyValueAllowCloseFriends",
+      "params": [],
+      "type": "PrivacyRule"
+    },
+    {
+      "id": 3974725963,
+      "predicate": "privacyValueAllowPremium",
       "params": [],
       "type": "PrivacyRule"
     },
@@ -9838,14 +10014,6 @@ var SCHEMA_GLOBAL = {
           "type": "flags.3?true"
         },
         {
-          "name": "animated",
-          "type": "flags.5?true"
-        },
-        {
-          "name": "videos",
-          "type": "flags.6?true"
-        },
-        {
           "name": "emojis",
           "type": "flags.7?true"
         },
@@ -9856,6 +10024,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "channel_emoji_status",
           "type": "flags.10?true"
+        },
+        {
+          "name": "creator",
+          "type": "flags.11?true"
         },
         {
           "name": "installed_date",
@@ -10244,6 +10416,45 @@ var SCHEMA_GLOBAL = {
       "id": 1406648280,
       "predicate": "keyboardButtonRequestPeer",
       "params": [
+        {
+          "name": "text",
+          "type": "string"
+        },
+        {
+          "name": "button_id",
+          "type": "int"
+        },
+        {
+          "name": "peer_type",
+          "type": "RequestPeerType"
+        },
+        {
+          "name": "max_quantity",
+          "type": "int"
+        }
+      ],
+      "type": "KeyboardButton"
+    },
+    {
+      "id": 3378916613,
+      "predicate": "inputKeyboardButtonRequestPeer",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "name_requested",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "username_requested",
+          "type": "flags.1?true"
+        },
+        {
+          "name": "photo_requested",
+          "type": "flags.2?true"
+        },
         {
           "name": "text",
           "type": "string"
@@ -14378,7 +14589,7 @@ var SCHEMA_GLOBAL = {
       "type": "PhoneCall"
     },
     {
-      "id": 2524937319,
+      "id": 810769141,
       "predicate": "phoneCall",
       "params": [
         {
@@ -14432,6 +14643,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "start_date",
           "type": "int"
+        },
+        {
+          "name": "custom_parameters",
+          "type": "flags.7?DataJSON"
         }
       ],
       "type": "PhoneCall"
@@ -19808,6 +20023,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags.6?true"
         },
         {
+          "name": "can_report",
+          "type": "flags.12?true"
+        },
+        {
           "name": "random_id",
           "type": "bytes"
         },
@@ -24008,7 +24227,7 @@ var SCHEMA_GLOBAL = {
       "type": "messages.QuickReplies"
     },
     {
-      "id": 3890846183,
+      "id": 3171321345,
       "predicate": "connectedBot",
       "params": [
         {
@@ -24025,7 +24244,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "recipients",
-          "type": "BusinessRecipients"
+          "type": "BusinessBotRecipients"
         }
       ],
       "type": "ConnectedBot"
@@ -24063,6 +24282,685 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "messages.DialogFilters"
+    },
+    {
+      "id": 1821253126,
+      "predicate": "birthday",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "day",
+          "type": "int"
+        },
+        {
+          "name": "month",
+          "type": "int"
+        },
+        {
+          "name": "year",
+          "type": "flags.0?int"
+        }
+      ],
+      "type": "Birthday"
+    },
+    {
+      "id": 2305045428,
+      "predicate": "botBusinessConnection",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "can_reply",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "disabled",
+          "type": "flags.1?true"
+        },
+        {
+          "name": "connection_id",
+          "type": "string"
+        },
+        {
+          "name": "user_id",
+          "type": "long"
+        },
+        {
+          "name": "dc_id",
+          "type": "int"
+        },
+        {
+          "name": "date",
+          "type": "int"
+        }
+      ],
+      "type": "BotBusinessConnection"
+    },
+    {
+      "id": 163867085,
+      "predicate": "inputBusinessIntro",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "name": "sticker",
+          "type": "flags.0?InputDocument"
+        }
+      ],
+      "type": "InputBusinessIntro"
+    },
+    {
+      "id": 1510606445,
+      "predicate": "businessIntro",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "name": "sticker",
+          "type": "flags.0?Document"
+        }
+      ],
+      "type": "BusinessIntro"
+    },
+    {
+      "id": 4211040925,
+      "predicate": "messages.myStickers",
+      "params": [
+        {
+          "name": "count",
+          "type": "int"
+        },
+        {
+          "name": "sets",
+          "type": "Vector<StickerSetCovered>"
+        }
+      ],
+      "type": "messages.MyStickers"
+    },
+    {
+      "id": 3818152105,
+      "predicate": "inputCollectibleUsername",
+      "params": [
+        {
+          "name": "username",
+          "type": "string"
+        }
+      ],
+      "type": "InputCollectible"
+    },
+    {
+      "id": 2732725412,
+      "predicate": "inputCollectiblePhone",
+      "params": [
+        {
+          "name": "phone",
+          "type": "string"
+        }
+      ],
+      "type": "InputCollectible"
+    },
+    {
+      "id": 1857945489,
+      "predicate": "fragment.collectibleInfo",
+      "params": [
+        {
+          "name": "purchase_date",
+          "type": "int"
+        },
+        {
+          "name": "currency",
+          "type": "string"
+        },
+        {
+          "name": "amount",
+          "type": "long"
+        },
+        {
+          "name": "crypto_currency",
+          "type": "string"
+        },
+        {
+          "name": "crypto_amount",
+          "type": "long"
+        },
+        {
+          "name": "url",
+          "type": "string"
+        }
+      ],
+      "type": "fragment.CollectibleInfo"
+    },
+    {
+      "id": 3303379486,
+      "predicate": "inputBusinessBotRecipients",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "existing_chats",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "new_chats",
+          "type": "flags.1?true"
+        },
+        {
+          "name": "contacts",
+          "type": "flags.2?true"
+        },
+        {
+          "name": "non_contacts",
+          "type": "flags.3?true"
+        },
+        {
+          "name": "exclude_selected",
+          "type": "flags.5?true"
+        },
+        {
+          "name": "users",
+          "type": "flags.4?Vector<InputUser>"
+        },
+        {
+          "name": "exclude_users",
+          "type": "flags.6?Vector<InputUser>"
+        }
+      ],
+      "type": "InputBusinessBotRecipients"
+    },
+    {
+      "id": 3096245107,
+      "predicate": "businessBotRecipients",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "existing_chats",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "new_chats",
+          "type": "flags.1?true"
+        },
+        {
+          "name": "contacts",
+          "type": "flags.2?true"
+        },
+        {
+          "name": "non_contacts",
+          "type": "flags.3?true"
+        },
+        {
+          "name": "exclude_selected",
+          "type": "flags.5?true"
+        },
+        {
+          "name": "users",
+          "type": "flags.4?Vector<long>"
+        },
+        {
+          "name": "exclude_users",
+          "type": "flags.6?Vector<long>"
+        }
+      ],
+      "type": "BusinessBotRecipients"
+    },
+    {
+      "id": 496600883,
+      "predicate": "contactBirthday",
+      "params": [
+        {
+          "name": "contact_id",
+          "type": "long"
+        },
+        {
+          "name": "birthday",
+          "type": "Birthday"
+        }
+      ],
+      "type": "ContactBirthday"
+    },
+    {
+      "id": 290452237,
+      "predicate": "contacts.contactBirthdays",
+      "params": [
+        {
+          "name": "contacts",
+          "type": "Vector<ContactBirthday>"
+        },
+        {
+          "name": "users",
+          "type": "Vector<User>"
+        }
+      ],
+      "type": "contacts.ContactBirthdays"
+    },
+    {
+      "id": 1653379620,
+      "predicate": "missingInvitee",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "premium_would_allow_invite",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "premium_required_for_pm",
+          "type": "flags.1?true"
+        },
+        {
+          "name": "user_id",
+          "type": "long"
+        }
+      ],
+      "type": "MissingInvitee"
+    },
+    {
+      "id": 2136862630,
+      "predicate": "messages.invitedUsers",
+      "params": [
+        {
+          "name": "updates",
+          "type": "Updates"
+        },
+        {
+          "name": "missing_invitees",
+          "type": "Vector<MissingInvitee>"
+        }
+      ],
+      "type": "messages.InvitedUsers"
+    },
+    {
+      "id": 292003751,
+      "predicate": "inputBusinessChatLink",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "message",
+          "type": "string"
+        },
+        {
+          "name": "entities",
+          "type": "flags.0?Vector<MessageEntity>"
+        },
+        {
+          "name": "title",
+          "type": "flags.1?string"
+        }
+      ],
+      "type": "InputBusinessChatLink"
+    },
+    {
+      "id": 3031328367,
+      "predicate": "businessChatLink",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "link",
+          "type": "string"
+        },
+        {
+          "name": "message",
+          "type": "string"
+        },
+        {
+          "name": "entities",
+          "type": "flags.0?Vector<MessageEntity>"
+        },
+        {
+          "name": "title",
+          "type": "flags.1?string"
+        },
+        {
+          "name": "views",
+          "type": "int"
+        }
+      ],
+      "type": "BusinessChatLink"
+    },
+    {
+      "id": 3963855569,
+      "predicate": "account.businessChatLinks",
+      "params": [
+        {
+          "name": "links",
+          "type": "Vector<BusinessChatLink>"
+        },
+        {
+          "name": "chats",
+          "type": "Vector<Chat>"
+        },
+        {
+          "name": "users",
+          "type": "Vector<User>"
+        }
+      ],
+      "type": "account.BusinessChatLinks"
+    },
+    {
+      "id": 2586029857,
+      "predicate": "account.resolvedBusinessChatLinks",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "peer",
+          "type": "Peer"
+        },
+        {
+          "name": "message",
+          "type": "string"
+        },
+        {
+          "name": "entities",
+          "type": "flags.0?Vector<MessageEntity>"
+        },
+        {
+          "name": "chats",
+          "type": "Vector<Chat>"
+        },
+        {
+          "name": "users",
+          "type": "Vector<User>"
+        }
+      ],
+      "type": "account.ResolvedBusinessChatLinks"
+    },
+    {
+      "id": 3593466986,
+      "predicate": "requestedPeerUser",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "user_id",
+          "type": "long"
+        },
+        {
+          "name": "first_name",
+          "type": "flags.0?string"
+        },
+        {
+          "name": "last_name",
+          "type": "flags.0?string"
+        },
+        {
+          "name": "username",
+          "type": "flags.1?string"
+        },
+        {
+          "name": "photo",
+          "type": "flags.2?Photo"
+        }
+      ],
+      "type": "RequestedPeer"
+    },
+    {
+      "id": 1929860175,
+      "predicate": "requestedPeerChat",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "chat_id",
+          "type": "long"
+        },
+        {
+          "name": "title",
+          "type": "flags.0?string"
+        },
+        {
+          "name": "photo",
+          "type": "flags.2?Photo"
+        }
+      ],
+      "type": "RequestedPeer"
+    },
+    {
+      "id": 2342781924,
+      "predicate": "requestedPeerChannel",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "channel_id",
+          "type": "long"
+        },
+        {
+          "name": "title",
+          "type": "flags.0?string"
+        },
+        {
+          "name": "username",
+          "type": "flags.1?string"
+        },
+        {
+          "name": "photo",
+          "type": "flags.2?Photo"
+        }
+      ],
+      "type": "RequestedPeer"
+    },
+    {
+      "id": 1124938064,
+      "predicate": "sponsoredMessageReportOption",
+      "params": [
+        {
+          "name": "text",
+          "type": "string"
+        },
+        {
+          "name": "option",
+          "type": "bytes"
+        }
+      ],
+      "type": "SponsoredMessageReportOption"
+    },
+    {
+      "id": 2221907522,
+      "predicate": "channels.sponsoredMessageReportResultChooseOption",
+      "params": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "options",
+          "type": "Vector<SponsoredMessageReportOption>"
+        }
+      ],
+      "type": "channels.SponsoredMessageReportResult"
+    },
+    {
+      "id": 1044107055,
+      "predicate": "channels.sponsoredMessageReportResultAdsHidden",
+      "params": [],
+      "type": "channels.SponsoredMessageReportResult"
+    },
+    {
+      "id": 2910423113,
+      "predicate": "channels.sponsoredMessageReportResultReported",
+      "params": [],
+      "type": "channels.SponsoredMessageReportResult"
+    },
+    {
+      "id": 3497741229,
+      "predicate": "stats.broadcastRevenueStats",
+      "params": [
+        {
+          "name": "top_hours_graph",
+          "type": "StatsGraph"
+        },
+        {
+          "name": "revenue_graph",
+          "type": "StatsGraph"
+        },
+        {
+          "name": "current_balance",
+          "type": "long"
+        },
+        {
+          "name": "available_balance",
+          "type": "long"
+        },
+        {
+          "name": "overall_revenue",
+          "type": "long"
+        },
+        {
+          "name": "usd_rate",
+          "type": "double"
+        }
+      ],
+      "type": "stats.BroadcastRevenueStats"
+    },
+    {
+      "id": 3966080823,
+      "predicate": "stats.broadcastRevenueWithdrawalUrl",
+      "params": [
+        {
+          "name": "url",
+          "type": "string"
+        }
+      ],
+      "type": "stats.BroadcastRevenueWithdrawalUrl"
+    },
+    {
+      "id": 1434332356,
+      "predicate": "broadcastRevenueTransactionProceeds",
+      "params": [
+        {
+          "name": "amount",
+          "type": "long"
+        },
+        {
+          "name": "from_date",
+          "type": "int"
+        },
+        {
+          "name": "to_date",
+          "type": "int"
+        }
+      ],
+      "type": "BroadcastRevenueTransaction"
+    },
+    {
+      "id": 1515784568,
+      "predicate": "broadcastRevenueTransactionWithdrawal",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "pending",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "failed",
+          "type": "flags.2?true"
+        },
+        {
+          "name": "amount",
+          "type": "long"
+        },
+        {
+          "name": "date",
+          "type": "int"
+        },
+        {
+          "name": "provider",
+          "type": "string"
+        },
+        {
+          "name": "transaction_date",
+          "type": "flags.1?int"
+        },
+        {
+          "name": "transaction_url",
+          "type": "flags.1?string"
+        }
+      ],
+      "type": "BroadcastRevenueTransaction"
+    },
+    {
+      "id": 1121127726,
+      "predicate": "broadcastRevenueTransactionRefund",
+      "params": [
+        {
+          "name": "amount",
+          "type": "long"
+        },
+        {
+          "name": "date",
+          "type": "int"
+        },
+        {
+          "name": "provider",
+          "type": "string"
+        }
+      ],
+      "type": "BroadcastRevenueTransaction"
+    },
+    {
+      "id": 2266334310,
+      "predicate": "stats.broadcastRevenueTransactions",
+      "params": [
+        {
+          "name": "count",
+          "type": "int"
+        },
+        {
+          "name": "transactions",
+          "type": "Vector<BroadcastRevenueTransaction>"
+        }
+      ],
+      "type": "stats.BroadcastRevenueTransactions"
     }
   ],
   "methods": [
@@ -24195,6 +25093,21 @@ var SCHEMA_GLOBAL = {
         {
           "name": "takeout_id",
           "type": "long"
+        },
+        {
+          "name": "query",
+          "type": "!X"
+        }
+      ],
+      "type": "X"
+    },
+    {
+      "id": 3710427022,
+      "method": "invokeWithBusinessConnection",
+      "params": [
+        {
+          "name": "connection_id",
+          "type": "string"
         },
         {
           "name": "query",
@@ -25932,7 +26845,7 @@ var SCHEMA_GLOBAL = {
       "type": "Bool"
     },
     {
-      "id": 2620215933,
+      "id": 1138250269,
       "method": "account.updateConnectedBot",
       "params": [
         {
@@ -25953,7 +26866,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "recipients",
-          "type": "InputBusinessRecipients"
+          "type": "InputBusinessBotRecipients"
         }
       ],
       "type": "Updates"
@@ -25963,6 +26876,138 @@ var SCHEMA_GLOBAL = {
       "method": "account.getConnectedBots",
       "params": [],
       "type": "account.ConnectedBots"
+    },
+    {
+      "id": 1990746736,
+      "method": "account.getBotBusinessConnection",
+      "params": [
+        {
+          "name": "connection_id",
+          "type": "string"
+        }
+      ],
+      "type": "Updates"
+    },
+    {
+      "id": 2786381876,
+      "method": "account.updateBusinessIntro",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "intro",
+          "type": "flags.0?InputBusinessIntro"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
+      "id": 1684934807,
+      "method": "account.toggleConnectedBotPaused",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "paused",
+          "type": "Bool"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
+      "id": 1581481689,
+      "method": "account.disablePeerConnectedBot",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
+      "id": 3429764113,
+      "method": "account.updateBirthday",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "birthday",
+          "type": "flags.0?Birthday"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
+      "id": 2287068814,
+      "method": "account.createBusinessChatLink",
+      "params": [
+        {
+          "name": "link",
+          "type": "InputBusinessChatLink"
+        }
+      ],
+      "type": "BusinessChatLink"
+    },
+    {
+      "id": 2352222383,
+      "method": "account.editBusinessChatLink",
+      "params": [
+        {
+          "name": "slug",
+          "type": "string"
+        },
+        {
+          "name": "link",
+          "type": "InputBusinessChatLink"
+        }
+      ],
+      "type": "BusinessChatLink"
+    },
+    {
+      "id": 1611085428,
+      "method": "account.deleteBusinessChatLink",
+      "params": [
+        {
+          "name": "slug",
+          "type": "string"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
+      "id": 1869667809,
+      "method": "account.getBusinessChatLinks",
+      "params": [],
+      "type": "account.BusinessChatLinks"
+    },
+    {
+      "id": 1418913262,
+      "method": "account.resolveBusinessChatLink",
+      "params": [
+        {
+          "name": "slug",
+          "type": "string"
+        }
+      ],
+      "type": "account.ResolvedBusinessChatLinks"
+    },
+    {
+      "id": 3645048288,
+      "method": "account.updatePersonalChannel",
+      "params": [
+        {
+          "name": "channel",
+          "type": "InputChannel"
+        }
+      ],
+      "type": "Bool"
     },
     {
       "id": 227648840,
@@ -26406,6 +27451,12 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "Bool"
+    },
+    {
+      "id": 3673008228,
+      "method": "contacts.getBirthdays",
+      "params": [],
+      "type": "contacts.ContactBirthdays"
     },
     {
       "id": 1673946374,
@@ -26985,7 +28036,7 @@ var SCHEMA_GLOBAL = {
       "type": "Updates"
     },
     {
-      "id": 4064760803,
+      "id": 3418804487,
       "method": "messages.addChatUser",
       "params": [
         {
@@ -27001,7 +28052,7 @@ var SCHEMA_GLOBAL = {
           "type": "int"
         }
       ],
-      "type": "Updates"
+      "type": "messages.InvitedUsers"
     },
     {
       "id": 2719505579,
@@ -27027,7 +28078,7 @@ var SCHEMA_GLOBAL = {
       "type": "Updates"
     },
     {
-      "id": 3450904,
+      "id": 2463030740,
       "method": "messages.createChat",
       "params": [
         {
@@ -27047,7 +28098,7 @@ var SCHEMA_GLOBAL = {
           "type": "flags.0?int"
         }
       ],
-      "type": "Updates"
+      "type": "messages.InvitedUsers"
     },
     {
       "id": 651135312,
@@ -28309,9 +29360,17 @@ var SCHEMA_GLOBAL = {
       "type": "Bool"
     },
     {
-      "id": 1369162417,
+      "id": 345405816,
       "method": "messages.uploadMedia",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "business_connection_id",
+          "type": "flags.0?string"
+        },
         {
           "name": "peer",
           "type": "InputPeer"
@@ -30635,7 +31694,7 @@ var SCHEMA_GLOBAL = {
       "type": "messages.Messages"
     },
     {
-      "id": 857029332,
+      "id": 1819610593,
       "method": "messages.sendQuickReplyMessages",
       "params": [
         {
@@ -30645,6 +31704,14 @@ var SCHEMA_GLOBAL = {
         {
           "name": "shortcut_id",
           "type": "int"
+        },
+        {
+          "name": "id",
+          "type": "Vector<int>"
+        },
+        {
+          "name": "random_id",
+          "type": "Vector<long>"
         }
       ],
       "type": "Updates"
@@ -30674,6 +31741,21 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "Bool"
+    },
+    {
+      "id": 3501580796,
+      "method": "messages.getMyStickers",
+      "params": [
+        {
+          "name": "offset_id",
+          "type": "long"
+        },
+        {
+          "name": "limit",
+          "type": "int"
+        }
+      ],
+      "type": "messages.MyStickers"
     },
     {
       "id": 3990128682,
@@ -31565,7 +32647,7 @@ var SCHEMA_GLOBAL = {
       "type": "Updates"
     },
     {
-      "id": 429865580,
+      "id": 3387112788,
       "method": "channels.inviteToChannel",
       "params": [
         {
@@ -31577,7 +32659,7 @@ var SCHEMA_GLOBAL = {
           "type": "Vector<InputUser>"
         }
       ],
-      "type": "Updates"
+      "type": "messages.InvitedUsers"
     },
     {
       "id": 3222347747,
@@ -31647,6 +32729,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "check_limit",
           "type": "flags.1?true"
+        },
+        {
+          "name": "for_personal",
+          "type": "flags.2?true"
         }
       ],
       "type": "messages.Chats"
@@ -32357,6 +33443,40 @@ var SCHEMA_GLOBAL = {
       "type": "Bool"
     },
     {
+      "id": 2945447609,
+      "method": "channels.reportSponsoredMessage",
+      "params": [
+        {
+          "name": "channel",
+          "type": "InputChannel"
+        },
+        {
+          "name": "random_id",
+          "type": "bytes"
+        },
+        {
+          "name": "option",
+          "type": "bytes"
+        }
+      ],
+      "type": "channels.SponsoredMessageReportResult"
+    },
+    {
+      "id": 2598966553,
+      "method": "channels.restrictSponsoredMessages",
+      "params": [
+        {
+          "name": "channel",
+          "type": "InputChannel"
+        },
+        {
+          "name": "restricted",
+          "type": "Bool"
+        }
+      ],
+      "type": "Updates"
+    },
+    {
       "id": 2854709741,
       "method": "bots.sendCustomRequest",
       "params": [
@@ -32872,14 +33992,6 @@ var SCHEMA_GLOBAL = {
           "type": "flags.0?true"
         },
         {
-          "name": "animated",
-          "type": "flags.1?true"
-        },
-        {
-          "name": "videos",
-          "type": "flags.4?true"
-        },
-        {
           "name": "emojis",
           "type": "flags.5?true"
         },
@@ -33052,6 +34164,21 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "Bool"
+    },
+    {
+      "id": 1184253338,
+      "method": "stickers.replaceSticker",
+      "params": [
+        {
+          "name": "sticker",
+          "type": "InputDocument"
+        },
+        {
+          "name": "new_sticker",
+          "type": "InputStickerSetItem"
+        }
+      ],
+      "type": "messages.StickerSet"
     },
     {
       "id": 1430593449,
@@ -33885,6 +35012,59 @@ var SCHEMA_GLOBAL = {
       "type": "stats.PublicForwards"
     },
     {
+      "id": 1977595505,
+      "method": "stats.getBroadcastRevenueStats",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "dark",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "channel",
+          "type": "InputChannel"
+        }
+      ],
+      "type": "stats.BroadcastRevenueStats"
+    },
+    {
+      "id": 711323507,
+      "method": "stats.getBroadcastRevenueWithdrawalUrl",
+      "params": [
+        {
+          "name": "channel",
+          "type": "InputChannel"
+        },
+        {
+          "name": "password",
+          "type": "InputCheckPasswordSRP"
+        }
+      ],
+      "type": "stats.BroadcastRevenueWithdrawalUrl"
+    },
+    {
+      "id": 6891535,
+      "method": "stats.getBroadcastRevenueTransactions",
+      "params": [
+        {
+          "name": "channel",
+          "type": "InputChannel"
+        },
+        {
+          "name": "offset",
+          "type": "int"
+        },
+        {
+          "name": "limit",
+          "type": "int"
+        }
+      ],
+      "type": "stats.BroadcastRevenueTransactions"
+    },
+    {
       "id": 2222081934,
       "method": "chatlists.exportChatlistInvite",
       "params": [
@@ -34681,6 +35861,17 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "Bool"
+    },
+    {
+      "id": 3189671354,
+      "method": "fragment.getCollectibleInfo",
+      "params": [
+        {
+          "name": "collectible",
+          "type": "InputCollectible"
+        }
+      ],
+      "type": "fragment.CollectibleInfo"
     }
   ]
 }
