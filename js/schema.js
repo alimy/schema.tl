@@ -1,4 +1,4 @@
-var LAYER_NUMBER = 177
+var LAYER_NUMBER = 179
 
 var SCHEMA_GLOBAL = {
   "constructors": [
@@ -1663,7 +1663,7 @@ var SCHEMA_GLOBAL = {
       "type": "Chat"
     },
     {
-      "id": 3386052920,
+      "id": 640893467,
       "predicate": "chatFull",
       "params": [
         {
@@ -1745,12 +1745,16 @@ var SCHEMA_GLOBAL = {
         {
           "name": "available_reactions",
           "type": "flags.18?ChatReactions"
+        },
+        {
+          "name": "reactions_limit",
+          "type": "flags.20?int"
         }
       ],
       "type": "ChatFull"
     },
     {
-      "id": 1153455271,
+      "id": 3148559501,
       "predicate": "channelFull",
       "params": [
         {
@@ -1964,6 +1968,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "available_reactions",
           "type": "flags.30?ChatReactions"
+        },
+        {
+          "name": "reactions_limit",
+          "type": "flags2.13?int"
         },
         {
           "name": "stories",
@@ -4268,6 +4276,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "flags2",
           "type": "#"
+        },
+        {
+          "name": "sponsored_enabled",
+          "type": "flags2.7?true"
         },
         {
           "name": "id",
@@ -7325,6 +7337,25 @@ var SCHEMA_GLOBAL = {
         {
           "name": "qts",
           "type": "int"
+        }
+      ],
+      "type": "Update"
+    },
+    {
+      "id": 405070859,
+      "predicate": "updateNewStoryReaction",
+      "params": [
+        {
+          "name": "story_id",
+          "type": "int"
+        },
+        {
+          "name": "peer",
+          "type": "Peer"
+        },
+        {
+          "name": "reaction",
+          "type": "Reaction"
         }
       ],
       "type": "Update"
@@ -12449,6 +12480,36 @@ var SCHEMA_GLOBAL = {
       "type": "auth.SentCodeType"
     },
     {
+      "id": 2752949377,
+      "predicate": "auth.sentCodeTypeSmsWord",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "beginning",
+          "type": "flags.0?string"
+        }
+      ],
+      "type": "auth.SentCodeType"
+    },
+    {
+      "id": 3010958511,
+      "predicate": "auth.sentCodeTypeSmsPhrase",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "beginning",
+          "type": "flags.0?string"
+        }
+      ],
+      "type": "auth.SentCodeType"
+    },
+    {
       "id": 911761060,
       "predicate": "messages.botCallbackAnswer",
       "params": [
@@ -17248,12 +17309,12 @@ var SCHEMA_GLOBAL = {
       "type": "help.UserInfo"
     },
     {
-      "id": 1823064809,
+      "id": 4279689930,
       "predicate": "pollAnswer",
       "params": [
         {
           "name": "text",
-          "type": "string"
+          "type": "TextWithEntities"
         },
         {
           "name": "option",
@@ -17263,7 +17324,7 @@ var SCHEMA_GLOBAL = {
       "type": "PollAnswer"
     },
     {
-      "id": 2262925665,
+      "id": 1484026161,
       "predicate": "poll",
       "params": [
         {
@@ -17292,7 +17353,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "question",
-          "type": "string"
+          "type": "TextWithEntities"
         },
         {
           "name": "answers",
@@ -17644,6 +17705,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "allow_firebase",
           "type": "flags.7?true"
+        },
+        {
+          "name": "unknown_number",
+          "type": "flags.9?true"
         },
         {
           "name": "logout_tokens",
@@ -18377,6 +18442,29 @@ var SCHEMA_GLOBAL = {
         {
           "name": "story",
           "type": "flags.0?StoryItem"
+        }
+      ],
+      "type": "WebPageAttribute"
+    },
+    {
+      "id": 1355547603,
+      "predicate": "webPageAttributeStickerSet",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "emojis",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "text_color",
+          "type": "flags.1?true"
+        },
+        {
+          "name": "stickers",
+          "type": "Vector<Document>"
         }
       ],
       "type": "WebPageAttribute"
@@ -20007,7 +20095,7 @@ var SCHEMA_GLOBAL = {
       "type": "account.ResetPasswordResult"
     },
     {
-      "id": 3981673463,
+      "id": 3186488678,
       "predicate": "sponsoredMessage",
       "params": [
         {
@@ -20019,10 +20107,6 @@ var SCHEMA_GLOBAL = {
           "type": "flags.5?true"
         },
         {
-          "name": "show_peer_photo",
-          "type": "flags.6?true"
-        },
-        {
           "name": "can_report",
           "type": "flags.12?true"
         },
@@ -20031,32 +20115,12 @@ var SCHEMA_GLOBAL = {
           "type": "bytes"
         },
         {
-          "name": "from_id",
-          "type": "flags.3?Peer"
+          "name": "url",
+          "type": "string"
         },
         {
-          "name": "chat_invite",
-          "type": "flags.4?ChatInvite"
-        },
-        {
-          "name": "chat_invite_hash",
-          "type": "flags.4?string"
-        },
-        {
-          "name": "channel_post",
-          "type": "flags.2?int"
-        },
-        {
-          "name": "start_param",
-          "type": "flags.0?string"
-        },
-        {
-          "name": "webpage",
-          "type": "flags.9?SponsoredWebPage"
-        },
-        {
-          "name": "app",
-          "type": "flags.10?BotApp"
+          "name": "title",
+          "type": "string"
         },
         {
           "name": "message",
@@ -20067,8 +20131,16 @@ var SCHEMA_GLOBAL = {
           "type": "flags.1?Vector<MessageEntity>"
         },
         {
+          "name": "photo",
+          "type": "flags.6?Photo"
+        },
+        {
+          "name": "color",
+          "type": "flags.13?PeerColor"
+        },
+        {
           "name": "button_text",
-          "type": "flags.11?string"
+          "type": "string"
         },
         {
           "name": "sponsor_info",
@@ -21753,6 +21825,40 @@ var SCHEMA_GLOBAL = {
       "type": "EmojiGroup"
     },
     {
+      "id": 2161274055,
+      "predicate": "emojiGroupGreeting",
+      "params": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "icon_emoji_id",
+          "type": "long"
+        },
+        {
+          "name": "emoticons",
+          "type": "Vector<string>"
+        }
+      ],
+      "type": "EmojiGroup"
+    },
+    {
+      "id": 154914612,
+      "predicate": "emojiGroupPremium",
+      "params": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "icon_emoji_id",
+          "type": "long"
+        }
+      ],
+      "type": "EmojiGroup"
+    },
+    {
       "id": 1874111879,
       "predicate": "messages.emojiGroupsNotModified",
       "params": [],
@@ -22254,29 +22360,6 @@ var SCHEMA_GLOBAL = {
       "type": "MessagePeerVote"
     },
     {
-      "id": 1035529315,
-      "predicate": "sponsoredWebPage",
-      "params": [
-        {
-          "name": "flags",
-          "type": "#"
-        },
-        {
-          "name": "url",
-          "type": "string"
-        },
-        {
-          "name": "site_name",
-          "type": "string"
-        },
-        {
-          "name": "photo",
-          "type": "flags.0?Photo"
-        }
-      ],
-      "type": "SponsoredWebPage"
-    },
-    {
       "id": 2371443926,
       "predicate": "storyViews",
       "params": [
@@ -22503,9 +22586,13 @@ var SCHEMA_GLOBAL = {
       "type": "stories.AllStories"
     },
     {
-      "id": 1574486984,
+      "id": 1673780490,
       "predicate": "stories.stories",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
         {
           "name": "count",
           "type": "int"
@@ -22513,6 +22600,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "stories",
           "type": "Vector<StoryItem>"
+        },
+        {
+          "name": "pinned_to_top",
+          "type": "flags.0?Vector<int>"
         },
         {
           "name": "chats",
@@ -24829,7 +24920,7 @@ var SCHEMA_GLOBAL = {
       "type": "channels.SponsoredMessageReportResult"
     },
     {
-      "id": 3497741229,
+      "id": 1409802903,
       "predicate": "stats.broadcastRevenueStats",
       "params": [
         {
@@ -24841,16 +24932,8 @@ var SCHEMA_GLOBAL = {
           "type": "StatsGraph"
         },
         {
-          "name": "current_balance",
-          "type": "long"
-        },
-        {
-          "name": "available_balance",
-          "type": "long"
-        },
-        {
-          "name": "overall_revenue",
-          "type": "long"
+          "name": "balances",
+          "type": "BroadcastRevenueBalances"
         },
         {
           "name": "usd_rate",
@@ -24961,6 +25044,64 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "stats.BroadcastRevenueTransactions"
+    },
+    {
+      "id": 3133384218,
+      "predicate": "reactionNotificationsFromContacts",
+      "params": [],
+      "type": "ReactionNotificationsFrom"
+    },
+    {
+      "id": 1268654752,
+      "predicate": "reactionNotificationsFromAll",
+      "params": [],
+      "type": "ReactionNotificationsFrom"
+    },
+    {
+      "id": 1457736048,
+      "predicate": "reactionsNotifySettings",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "messages_notify_from",
+          "type": "flags.0?ReactionNotificationsFrom"
+        },
+        {
+          "name": "stories_notify_from",
+          "type": "flags.1?ReactionNotificationsFrom"
+        },
+        {
+          "name": "sound",
+          "type": "NotificationSound"
+        },
+        {
+          "name": "show_previews",
+          "type": "Bool"
+        }
+      ],
+      "type": "ReactionsNotifySettings"
+    },
+    {
+      "id": 2218324422,
+      "predicate": "broadcastRevenueBalances",
+      "params": [
+        {
+          "name": "current_balance",
+          "type": "long"
+        },
+        {
+          "name": "available_balance",
+          "type": "long"
+        },
+        {
+          "name": "overall_revenue",
+          "type": "long"
+        }
+      ],
+      "type": "BroadcastRevenueBalances"
     }
   ],
   "methods": [
@@ -25470,6 +25611,25 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "auth.SentCode"
+    },
+    {
+      "id": 3416125430,
+      "method": "auth.reportMissingCode",
+      "params": [
+        {
+          "name": "phone_number",
+          "type": "string"
+        },
+        {
+          "name": "phone_code_hash",
+          "type": "string"
+        },
+        {
+          "name": "mnc",
+          "type": "string"
+        }
+      ],
+      "type": "Bool"
     },
     {
       "id": 3968205178,
@@ -27010,6 +27170,34 @@ var SCHEMA_GLOBAL = {
       "type": "Bool"
     },
     {
+      "id": 3118048141,
+      "method": "account.toggleSponsoredMessages",
+      "params": [
+        {
+          "name": "enabled",
+          "type": "Bool"
+        }
+      ],
+      "type": "Bool"
+    },
+    {
+      "id": 115172684,
+      "method": "account.getReactionsNotifySettings",
+      "params": [],
+      "type": "ReactionsNotifySettings"
+    },
+    {
+      "id": 829220168,
+      "method": "account.setReactionsNotifySettings",
+      "params": [
+        {
+          "name": "settings",
+          "type": "ReactionsNotifySettings"
+        }
+      ],
+      "type": "ReactionsNotifySettings"
+    },
+    {
       "id": 227648840,
       "method": "users.getUsers",
       "params": [
@@ -28534,6 +28722,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "flags",
           "type": "#"
+        },
+        {
+          "name": "broadcasts_only",
+          "type": "flags.1?true"
         },
         {
           "name": "folder_id",
@@ -30698,9 +30890,13 @@ var SCHEMA_GLOBAL = {
       "type": "messages.MessageReactionsList"
     },
     {
-      "id": 4273039217,
+      "id": 1511328724,
       "method": "messages.setChatAvailableReactions",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
         {
           "name": "peer",
           "type": "InputPeer"
@@ -30708,6 +30904,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "available_reactions",
           "type": "ChatReactions"
+        },
+        {
+          "name": "reactions_limit",
+          "type": "flags.0?int"
         }
       ],
       "type": "Updates"
@@ -31756,6 +31956,17 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "messages.MyStickers"
+    },
+    {
+      "id": 500711669,
+      "method": "messages.getEmojiStickerGroups",
+      "params": [
+        {
+          "name": "hash",
+          "type": "int"
+        }
+      ],
+      "type": "messages.EmojiGroups"
     },
     {
       "id": 3990128682,
@@ -33387,12 +33598,16 @@ var SCHEMA_GLOBAL = {
       "type": "Updates"
     },
     {
-      "id": 2209811863,
+      "id": 631707458,
       "method": "channels.getChannelRecommendations",
       "params": [
         {
+          "name": "flags",
+          "type": "#"
+        },
+        {
           "name": "channel",
-          "type": "InputChannel"
+          "type": "flags.0?InputChannel"
         }
       ],
       "type": "messages.Chats"
@@ -35714,6 +35929,21 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "stories.StoryReactionsList"
+    },
+    {
+      "id": 187268763,
+      "method": "stories.togglePinnedToTop",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "id",
+          "type": "Vector<int>"
+        }
+      ],
+      "type": "Bool"
     },
     {
       "id": 1626764896,
