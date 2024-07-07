@@ -1,4 +1,4 @@
-var LAYER_NUMBER = 179
+var LAYER_NUMBER = 183
 
 var SCHEMA_GLOBAL = {
   "constructors": [
@@ -502,7 +502,7 @@ var SCHEMA_GLOBAL = {
       "type": "InputMedia"
     },
     {
-      "id": 2394269397,
+      "id": 1080028941,
       "predicate": "inputMediaInvoice",
       "params": [
         {
@@ -531,7 +531,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "provider",
-          "type": "string"
+          "type": "flags.3?string"
         },
         {
           "name": "provider_data",
@@ -655,6 +655,21 @@ var SCHEMA_GLOBAL = {
         {
           "name": "url",
           "type": "string"
+        }
+      ],
+      "type": "InputMedia"
+    },
+    {
+      "id": 2858819523,
+      "predicate": "inputMediaPaidMedia",
+      "params": [
+        {
+          "name": "stars_amount",
+          "type": "long"
+        },
+        {
+          "name": "extended_media",
+          "type": "Vector<InputMedia>"
         }
       ],
       "type": "InputMedia"
@@ -1830,6 +1845,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags2.12?true"
         },
         {
+          "name": "paid_media_allowed",
+          "type": "flags2.14?true"
+        },
+        {
           "name": "id",
           "type": "long"
         },
@@ -2136,7 +2155,7 @@ var SCHEMA_GLOBAL = {
       "type": "Message"
     },
     {
-      "id": 592953125,
+      "id": 2486456898,
       "predicate": "message",
       "params": [
         {
@@ -2290,6 +2309,14 @@ var SCHEMA_GLOBAL = {
         {
           "name": "quick_reply_shortcut_id",
           "type": "flags.30?int"
+        },
+        {
+          "name": "effect",
+          "type": "flags2.2?long"
+        },
+        {
+          "name": "factcheck",
+          "type": "flags2.3?FactCheck"
         }
       ],
       "type": "Message"
@@ -2775,6 +2802,21 @@ var SCHEMA_GLOBAL = {
         {
           "name": "until_date",
           "type": "int"
+        }
+      ],
+      "type": "MessageMedia"
+    },
+    {
+      "id": 2827297937,
+      "predicate": "messageMediaPaidMedia",
+      "params": [
+        {
+          "name": "stars_amount",
+          "type": "long"
+        },
+        {
+          "name": "extended_media",
+          "type": "Vector<MessageExtendedMedia>"
         }
       ],
       "type": "MessageMedia"
@@ -6868,7 +6910,7 @@ var SCHEMA_GLOBAL = {
       "type": "Update"
     },
     {
-      "id": 1517529484,
+      "id": 3584300836,
       "predicate": "updateMessageExtendedMedia",
       "params": [
         {
@@ -6881,7 +6923,7 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "extended_media",
-          "type": "MessageExtendedMedia"
+          "type": "Vector<MessageExtendedMedia>"
         }
       ],
       "type": "Update"
@@ -7356,6 +7398,86 @@ var SCHEMA_GLOBAL = {
         {
           "name": "reaction",
           "type": "Reaction"
+        }
+      ],
+      "type": "Update"
+    },
+    {
+      "id": 3755565557,
+      "predicate": "updateBroadcastRevenueTransactions",
+      "params": [
+        {
+          "name": "peer",
+          "type": "Peer"
+        },
+        {
+          "name": "balances",
+          "type": "BroadcastRevenueBalances"
+        }
+      ],
+      "type": "Update"
+    },
+    {
+      "id": 263737752,
+      "predicate": "updateStarsBalance",
+      "params": [
+        {
+          "name": "balance",
+          "type": "long"
+        }
+      ],
+      "type": "Update"
+    },
+    {
+      "id": 513998247,
+      "predicate": "updateBusinessBotCallbackQuery",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "query_id",
+          "type": "long"
+        },
+        {
+          "name": "user_id",
+          "type": "long"
+        },
+        {
+          "name": "connection_id",
+          "type": "string"
+        },
+        {
+          "name": "message",
+          "type": "Message"
+        },
+        {
+          "name": "reply_to_message",
+          "type": "flags.2?Message"
+        },
+        {
+          "name": "chat_instance",
+          "type": "long"
+        },
+        {
+          "name": "data",
+          "type": "flags.0?bytes"
+        }
+      ],
+      "type": "Update"
+    },
+    {
+      "id": 2776936473,
+      "predicate": "updateStarsRevenueStatus",
+      "params": [
+        {
+          "name": "peer",
+          "type": "Peer"
+        },
+        {
+          "name": "status",
+          "type": "StarsRevenueStatus"
         }
       ],
       "type": "Update"
@@ -10921,9 +11043,17 @@ var SCHEMA_GLOBAL = {
       "type": "MessageEntity"
     },
     {
-      "id": 34469328,
+      "id": 4056722092,
       "predicate": "messageEntityBlockquote",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "collapsed",
+          "type": "flags.0?true"
+        },
         {
           "name": "offset",
           "type": "int"
@@ -12453,7 +12583,7 @@ var SCHEMA_GLOBAL = {
       "type": "auth.SentCodeType"
     },
     {
-      "id": 3850048562,
+      "id": 10475318,
       "predicate": "auth.sentCodeTypeFirebaseSms",
       "params": [
         {
@@ -12463,6 +12593,14 @@ var SCHEMA_GLOBAL = {
         {
           "name": "nonce",
           "type": "flags.0?bytes"
+        },
+        {
+          "name": "play_integrity_project_id",
+          "type": "flags.2?long"
+        },
+        {
+          "name": "play_integrity_nonce",
+          "type": "flags.2?bytes"
         },
         {
           "name": "receipt",
@@ -12772,7 +12910,7 @@ var SCHEMA_GLOBAL = {
       "type": "DraftMessage"
     },
     {
-      "id": 1070397423,
+      "id": 761606687,
       "predicate": "draftMessage",
       "params": [
         {
@@ -12806,6 +12944,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "date",
           "type": "int"
+        },
+        {
+          "name": "effect",
+          "type": "flags.7?long"
         }
       ],
       "type": "DraftMessage"
@@ -14251,6 +14393,45 @@ var SCHEMA_GLOBAL = {
       "type": "payments.PaymentForm"
     },
     {
+      "id": 2079764828,
+      "predicate": "payments.paymentFormStars",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "form_id",
+          "type": "long"
+        },
+        {
+          "name": "bot_id",
+          "type": "long"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "name": "photo",
+          "type": "flags.5?WebDocument"
+        },
+        {
+          "name": "invoice",
+          "type": "Invoice"
+        },
+        {
+          "name": "users",
+          "type": "Vector<User>"
+        }
+      ],
+      "type": "payments.PaymentForm"
+    },
+    {
       "id": 3510966403,
       "predicate": "payments.validatedRequestedInfo",
       "params": [
@@ -14349,6 +14530,57 @@ var SCHEMA_GLOBAL = {
         },
         {
           "name": "credentials_title",
+          "type": "string"
+        },
+        {
+          "name": "users",
+          "type": "Vector<User>"
+        }
+      ],
+      "type": "payments.PaymentReceipt"
+    },
+    {
+      "id": 3669751866,
+      "predicate": "payments.paymentReceiptStars",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "date",
+          "type": "int"
+        },
+        {
+          "name": "bot_id",
+          "type": "long"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "name": "photo",
+          "type": "flags.2?WebDocument"
+        },
+        {
+          "name": "invoice",
+          "type": "Invoice"
+        },
+        {
+          "name": "currency",
+          "type": "string"
+        },
+        {
+          "name": "total_amount",
+          "type": "long"
+        },
+        {
+          "name": "transaction_id",
           "type": "string"
         },
         {
@@ -20733,12 +20965,20 @@ var SCHEMA_GLOBAL = {
       "type": "AttachMenuBotsBot"
     },
     {
-      "id": 202659196,
+      "id": 1294139288,
       "predicate": "webViewResultUrl",
       "params": [
         {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "fullsize",
+          "type": "flags.1?true"
+        },
+        {
           "name": "query_id",
-          "type": "long"
+          "type": "flags.0?long"
         },
         {
           "name": "url",
@@ -20746,17 +20986,6 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "WebViewResult"
-    },
-    {
-      "id": 2284811963,
-      "predicate": "simpleWebViewResultUrl",
-      "params": [
-        {
-          "name": "url",
-          "type": "string"
-        }
-      ],
-      "type": "SimpleWebViewResult"
     },
     {
       "id": 211046684,
@@ -20948,6 +21177,17 @@ var SCHEMA_GLOBAL = {
       "type": "InputInvoice"
     },
     {
+      "id": 497236696,
+      "predicate": "inputInvoiceStars",
+      "params": [
+        {
+          "name": "option",
+          "type": "StarsTopupOption"
+        }
+      ],
+      "type": "InputInvoice"
+    },
+    {
       "id": 2932919257,
       "predicate": "payments.exportedInvoice",
       "params": [
@@ -21124,6 +21364,29 @@ var SCHEMA_GLOBAL = {
         {
           "name": "until_date",
           "type": "int"
+        },
+        {
+          "name": "currency",
+          "type": "string"
+        },
+        {
+          "name": "amount",
+          "type": "long"
+        }
+      ],
+      "type": "InputStorePaymentPurpose"
+    },
+    {
+      "id": 1326377183,
+      "predicate": "inputStorePaymentStars",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "stars",
+          "type": "long"
         },
         {
           "name": "currency",
@@ -22102,17 +22365,6 @@ var SCHEMA_GLOBAL = {
       "type": "messages.BotApp"
     },
     {
-      "id": 1008422669,
-      "predicate": "appWebViewResultUrl",
-      "params": [
-        {
-          "name": "url",
-          "type": "string"
-        }
-      ],
-      "type": "AppWebViewResult"
-    },
-    {
       "id": 3044185557,
       "predicate": "inlineBotWebView",
       "params": [
@@ -22836,9 +23088,13 @@ var SCHEMA_GLOBAL = {
       "type": "StoriesStealthMode"
     },
     {
-      "id": 64088654,
+      "id": 3486113794,
       "predicate": "mediaAreaCoordinates",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
         {
           "name": "x",
           "type": "double"
@@ -22858,6 +23114,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "rotation",
           "type": "double"
+        },
+        {
+          "name": "radius",
+          "type": "flags.0?double"
         }
       ],
       "type": "MediaAreaCoordinates"
@@ -22917,9 +23177,13 @@ var SCHEMA_GLOBAL = {
       "type": "MediaArea"
     },
     {
-      "id": 3750443810,
+      "id": 3402974509,
       "predicate": "mediaAreaGeoPoint",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
         {
           "name": "coordinates",
           "type": "MediaAreaCoordinates"
@@ -22927,6 +23191,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "geo",
           "type": "GeoPoint"
+        },
+        {
+          "name": "address",
+          "type": "flags.0?GeoPointAddress"
         }
       ],
       "type": "MediaArea"
@@ -22992,6 +23260,21 @@ var SCHEMA_GLOBAL = {
         {
           "name": "msg_id",
           "type": "int"
+        }
+      ],
+      "type": "MediaArea"
+    },
+    {
+      "id": 926421125,
+      "predicate": "mediaAreaUrl",
+      "params": [
+        {
+          "name": "coordinates",
+          "type": "MediaAreaCoordinates"
+        },
+        {
+          "name": "url",
+          "type": "string"
         }
       ],
       "type": "MediaArea"
@@ -25102,6 +25385,437 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "BroadcastRevenueBalances"
+    },
+    {
+      "id": 2479088254,
+      "predicate": "availableEffect",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "premium_required",
+          "type": "flags.2?true"
+        },
+        {
+          "name": "id",
+          "type": "long"
+        },
+        {
+          "name": "emoticon",
+          "type": "string"
+        },
+        {
+          "name": "static_icon_id",
+          "type": "flags.0?long"
+        },
+        {
+          "name": "effect_sticker_id",
+          "type": "long"
+        },
+        {
+          "name": "effect_animation_id",
+          "type": "flags.1?long"
+        }
+      ],
+      "type": "AvailableEffect"
+    },
+    {
+      "id": 3522009691,
+      "predicate": "messages.availableEffectsNotModified",
+      "params": [],
+      "type": "messages.AvailableEffects"
+    },
+    {
+      "id": 3185271150,
+      "predicate": "messages.availableEffects",
+      "params": [
+        {
+          "name": "hash",
+          "type": "int"
+        },
+        {
+          "name": "effects",
+          "type": "Vector<AvailableEffect>"
+        },
+        {
+          "name": "documents",
+          "type": "Vector<Document>"
+        }
+      ],
+      "type": "messages.AvailableEffects"
+    },
+    {
+      "id": 3097230543,
+      "predicate": "factCheck",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "need_check",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "country",
+          "type": "flags.1?string"
+        },
+        {
+          "name": "text",
+          "type": "flags.1?TextWithEntities"
+        },
+        {
+          "name": "hash",
+          "type": "long"
+        }
+      ],
+      "type": "FactCheck"
+    },
+    {
+      "id": 2515714020,
+      "predicate": "starsTransactionPeerUnsupported",
+      "params": [],
+      "type": "StarsTransactionPeer"
+    },
+    {
+      "id": 3025646453,
+      "predicate": "starsTransactionPeerAppStore",
+      "params": [],
+      "type": "StarsTransactionPeer"
+    },
+    {
+      "id": 2069236235,
+      "predicate": "starsTransactionPeerPlayMarket",
+      "params": [],
+      "type": "StarsTransactionPeer"
+    },
+    {
+      "id": 621656824,
+      "predicate": "starsTransactionPeerPremiumBot",
+      "params": [],
+      "type": "StarsTransactionPeer"
+    },
+    {
+      "id": 3912227074,
+      "predicate": "starsTransactionPeerFragment",
+      "params": [],
+      "type": "StarsTransactionPeer"
+    },
+    {
+      "id": 3624771933,
+      "predicate": "starsTransactionPeer",
+      "params": [
+        {
+          "name": "peer",
+          "type": "Peer"
+        }
+      ],
+      "type": "StarsTransactionPeer"
+    },
+    {
+      "id": 1617438738,
+      "predicate": "starsTransactionPeerAds",
+      "params": [],
+      "type": "StarsTransactionPeer"
+    },
+    {
+      "id": 198776256,
+      "predicate": "starsTopupOption",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "extended",
+          "type": "flags.1?true"
+        },
+        {
+          "name": "stars",
+          "type": "long"
+        },
+        {
+          "name": "store_product",
+          "type": "flags.0?string"
+        },
+        {
+          "name": "currency",
+          "type": "string"
+        },
+        {
+          "name": "amount",
+          "type": "long"
+        }
+      ],
+      "type": "StarsTopupOption"
+    },
+    {
+      "id": 766853519,
+      "predicate": "starsTransaction",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "refund",
+          "type": "flags.3?true"
+        },
+        {
+          "name": "pending",
+          "type": "flags.4?true"
+        },
+        {
+          "name": "failed",
+          "type": "flags.6?true"
+        },
+        {
+          "name": "id",
+          "type": "string"
+        },
+        {
+          "name": "stars",
+          "type": "long"
+        },
+        {
+          "name": "date",
+          "type": "int"
+        },
+        {
+          "name": "peer",
+          "type": "StarsTransactionPeer"
+        },
+        {
+          "name": "title",
+          "type": "flags.0?string"
+        },
+        {
+          "name": "description",
+          "type": "flags.1?string"
+        },
+        {
+          "name": "photo",
+          "type": "flags.2?WebDocument"
+        },
+        {
+          "name": "transaction_date",
+          "type": "flags.5?int"
+        },
+        {
+          "name": "transaction_url",
+          "type": "flags.5?string"
+        },
+        {
+          "name": "bot_payload",
+          "type": "flags.7?bytes"
+        },
+        {
+          "name": "msg_id",
+          "type": "flags.8?int"
+        },
+        {
+          "name": "extended_media",
+          "type": "flags.9?Vector<MessageMedia>"
+        }
+      ],
+      "type": "StarsTransaction"
+    },
+    {
+      "id": 2364862048,
+      "predicate": "payments.starsStatus",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "balance",
+          "type": "long"
+        },
+        {
+          "name": "history",
+          "type": "Vector<StarsTransaction>"
+        },
+        {
+          "name": "next_offset",
+          "type": "flags.0?string"
+        },
+        {
+          "name": "chats",
+          "type": "Vector<Chat>"
+        },
+        {
+          "name": "users",
+          "type": "Vector<User>"
+        }
+      ],
+      "type": "payments.StarsStatus"
+    },
+    {
+      "id": 3900361664,
+      "predicate": "foundStory",
+      "params": [
+        {
+          "name": "peer",
+          "type": "Peer"
+        },
+        {
+          "name": "story",
+          "type": "StoryItem"
+        }
+      ],
+      "type": "FoundStory"
+    },
+    {
+      "id": 3806230327,
+      "predicate": "stories.foundStories",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "count",
+          "type": "int"
+        },
+        {
+          "name": "stories",
+          "type": "Vector<FoundStory>"
+        },
+        {
+          "name": "next_offset",
+          "type": "flags.0?string"
+        },
+        {
+          "name": "chats",
+          "type": "Vector<Chat>"
+        },
+        {
+          "name": "users",
+          "type": "Vector<User>"
+        }
+      ],
+      "type": "stories.FoundStories"
+    },
+    {
+      "id": 3729546643,
+      "predicate": "geoPointAddress",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "country_iso2",
+          "type": "string"
+        },
+        {
+          "name": "state",
+          "type": "flags.0?string"
+        },
+        {
+          "name": "city",
+          "type": "flags.1?string"
+        },
+        {
+          "name": "street",
+          "type": "flags.2?string"
+        }
+      ],
+      "type": "GeoPointAddress"
+    },
+    {
+      "id": 2033461574,
+      "predicate": "starsRevenueStatus",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "withdrawal_enabled",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "current_balance",
+          "type": "long"
+        },
+        {
+          "name": "available_balance",
+          "type": "long"
+        },
+        {
+          "name": "overall_revenue",
+          "type": "long"
+        },
+        {
+          "name": "next_withdrawal_at",
+          "type": "flags.1?int"
+        }
+      ],
+      "type": "StarsRevenueStatus"
+    },
+    {
+      "id": 3375085371,
+      "predicate": "payments.starsRevenueStats",
+      "params": [
+        {
+          "name": "revenue_graph",
+          "type": "StatsGraph"
+        },
+        {
+          "name": "status",
+          "type": "StarsRevenueStatus"
+        },
+        {
+          "name": "usd_rate",
+          "type": "double"
+        }
+      ],
+      "type": "payments.StarsRevenueStats"
+    },
+    {
+      "id": 497778871,
+      "predicate": "payments.starsRevenueWithdrawalUrl",
+      "params": [
+        {
+          "name": "url",
+          "type": "string"
+        }
+      ],
+      "type": "payments.StarsRevenueWithdrawalUrl"
+    },
+    {
+      "id": 961445665,
+      "predicate": "payments.starsRevenueAdsAccountUrl",
+      "params": [
+        {
+          "name": "url",
+          "type": "string"
+        }
+      ],
+      "type": "payments.StarsRevenueAdsAccountUrl"
+    },
+    {
+      "id": 543876817,
+      "predicate": "inputStarsTransaction",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "refund",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "id",
+          "type": "string"
+        }
+      ],
+      "type": "InputStarsTransaction"
     }
   ],
   "methods": [
@@ -25248,6 +25962,44 @@ var SCHEMA_GLOBAL = {
       "params": [
         {
           "name": "connection_id",
+          "type": "string"
+        },
+        {
+          "name": "query",
+          "type": "!X"
+        }
+      ],
+      "type": "X"
+    },
+    {
+      "id": 502868356,
+      "method": "invokeWithGooglePlayIntegrity",
+      "params": [
+        {
+          "name": "nonce",
+          "type": "string"
+        },
+        {
+          "name": "token",
+          "type": "string"
+        },
+        {
+          "name": "query",
+          "type": "!X"
+        }
+      ],
+      "type": "X"
+    },
+    {
+      "id": 229528824,
+      "method": "invokeWithApnsSecret",
+      "params": [
+        {
+          "name": "nonce",
+          "type": "string"
+        },
+        {
+          "name": "secret",
           "type": "string"
         },
         {
@@ -25459,9 +26211,13 @@ var SCHEMA_GLOBAL = {
       "type": "auth.Authorization"
     },
     {
-      "id": 1056025023,
+      "id": 3403969827,
       "method": "auth.resendCode",
       "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
         {
           "name": "phone_number",
           "type": "string"
@@ -25469,6 +26225,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "phone_code_hash",
           "type": "string"
+        },
+        {
+          "name": "reason",
+          "type": "flags.0?string"
         }
       ],
       "type": "auth.SentCode"
@@ -25571,7 +26331,7 @@ var SCHEMA_GLOBAL = {
       "type": "auth.Authorization"
     },
     {
-      "id": 2303085392,
+      "id": 2386109982,
       "method": "auth.requestFirebaseSms",
       "params": [
         {
@@ -25589,6 +26349,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "safety_net_token",
           "type": "flags.0?string"
+        },
+        {
+          "name": "play_integrity_token",
+          "type": "flags.2?string"
         },
         {
           "name": "ios_push_secret",
@@ -27910,7 +28674,7 @@ var SCHEMA_GLOBAL = {
       "type": "Bool"
     },
     {
-      "id": 3757573164,
+      "id": 2554304325,
       "method": "messages.sendMessage",
       "params": [
         {
@@ -27980,12 +28744,16 @@ var SCHEMA_GLOBAL = {
         {
           "name": "quick_reply_shortcut",
           "type": "flags.17?InputQuickReplyShortcut"
+        },
+        {
+          "name": "effect",
+          "type": "flags.18?long"
         }
       ],
       "type": "Updates"
     },
     {
-      "id": 2077646913,
+      "id": 2018673486,
       "method": "messages.sendMedia",
       "params": [
         {
@@ -28055,6 +28823,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "quick_reply_shortcut",
           "type": "flags.17?InputQuickReplyShortcut"
+        },
+        {
+          "name": "effect",
+          "type": "flags.18?long"
         }
       ],
       "type": "Updates"
@@ -29146,7 +29918,7 @@ var SCHEMA_GLOBAL = {
       "type": "messages.PeerDialogs"
     },
     {
-      "id": 2146678790,
+      "id": 3547514318,
       "method": "messages.saveDraft",
       "params": [
         {
@@ -29180,6 +29952,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "media",
           "type": "flags.5?InputMedia"
+        },
+        {
+          "name": "effect",
+          "type": "flags.7?long"
         }
       ],
       "type": "Bool"
@@ -29697,7 +30473,7 @@ var SCHEMA_GLOBAL = {
       "type": "messages.Messages"
     },
     {
-      "id": 211175177,
+      "id": 934757205,
       "method": "messages.sendMultiMedia",
       "params": [
         {
@@ -29751,6 +30527,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "quick_reply_shortcut",
           "type": "flags.17?InputQuickReplyShortcut"
+        },
+        {
+          "name": "effect",
+          "type": "flags.18?long"
         }
       ],
       "type": "Updates"
@@ -31100,6 +31880,10 @@ var SCHEMA_GLOBAL = {
           "type": "flags.5?true"
         },
         {
+          "name": "compact",
+          "type": "flags.7?true"
+        },
+        {
           "name": "peer",
           "type": "InputPeer"
         },
@@ -31170,7 +31954,7 @@ var SCHEMA_GLOBAL = {
       "type": "Bool"
     },
     {
-      "id": 440815626,
+      "id": 1094336115,
       "method": "messages.requestSimpleWebView",
       "params": [
         {
@@ -31184,6 +31968,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "from_side_menu",
           "type": "flags.2?true"
+        },
+        {
+          "name": "compact",
+          "type": "flags.7?true"
         },
         {
           "name": "bot",
@@ -31206,7 +31994,7 @@ var SCHEMA_GLOBAL = {
           "type": "string"
         }
       ],
-      "type": "SimpleWebViewResult"
+      "type": "WebViewResult"
     },
     {
       "id": 172168437,
@@ -31510,7 +32298,7 @@ var SCHEMA_GLOBAL = {
       "type": "messages.BotApp"
     },
     {
-      "id": 2354723644,
+      "id": 1398901710,
       "method": "messages.requestAppWebView",
       "params": [
         {
@@ -31520,6 +32308,10 @@ var SCHEMA_GLOBAL = {
         {
           "name": "write_allowed",
           "type": "flags.0?true"
+        },
+        {
+          "name": "compact",
+          "type": "flags.7?true"
         },
         {
           "name": "peer",
@@ -31542,7 +32334,7 @@ var SCHEMA_GLOBAL = {
           "type": "string"
         }
       ],
-      "type": "AppWebViewResult"
+      "type": "WebViewResult"
     },
     {
       "id": 2415577825,
@@ -31967,6 +32759,66 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "messages.EmojiGroups"
+    },
+    {
+      "id": 3735161401,
+      "method": "messages.getAvailableEffects",
+      "params": [
+        {
+          "name": "hash",
+          "type": "int"
+        }
+      ],
+      "type": "messages.AvailableEffects"
+    },
+    {
+      "id": 92925557,
+      "method": "messages.editFactCheck",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "msg_id",
+          "type": "int"
+        },
+        {
+          "name": "text",
+          "type": "TextWithEntities"
+        }
+      ],
+      "type": "Updates"
+    },
+    {
+      "id": 3520762892,
+      "method": "messages.deleteFactCheck",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "msg_id",
+          "type": "int"
+        }
+      ],
+      "type": "Updates"
+    },
+    {
+      "id": 3117270510,
+      "method": "messages.getFactCheck",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "msg_id",
+          "type": "Vector<int>"
+        }
+      ],
+      "type": "Vector<FactCheck>"
     },
     {
       "id": 3990128682,
@@ -33692,6 +34544,33 @@ var SCHEMA_GLOBAL = {
       "type": "Updates"
     },
     {
+      "id": 3516897403,
+      "method": "channels.searchPosts",
+      "params": [
+        {
+          "name": "hashtag",
+          "type": "string"
+        },
+        {
+          "name": "offset_rate",
+          "type": "int"
+        },
+        {
+          "name": "offset_peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "offset_id",
+          "type": "int"
+        },
+        {
+          "name": "limit",
+          "type": "int"
+        }
+      ],
+      "type": "messages.Messages"
+    },
+    {
       "id": 2854709741,
       "method": "bots.sendCustomRequest",
       "params": [
@@ -34193,6 +35072,156 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "Updates"
+    },
+    {
+      "id": 3222194131,
+      "method": "payments.getStarsTopupOptions",
+      "params": [],
+      "type": "Vector<StarsTopupOption>"
+    },
+    {
+      "id": 273665959,
+      "method": "payments.getStarsStatus",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        }
+      ],
+      "type": "payments.StarsStatus"
+    },
+    {
+      "id": 2543029594,
+      "method": "payments.getStarsTransactions",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "inbound",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "outbound",
+          "type": "flags.1?true"
+        },
+        {
+          "name": "ascending",
+          "type": "flags.2?true"
+        },
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "offset",
+          "type": "string"
+        },
+        {
+          "name": "limit",
+          "type": "int"
+        }
+      ],
+      "type": "payments.StarsStatus"
+    },
+    {
+      "id": 45839133,
+      "method": "payments.sendStarsForm",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "form_id",
+          "type": "long"
+        },
+        {
+          "name": "invoice",
+          "type": "InputInvoice"
+        }
+      ],
+      "type": "payments.PaymentResult"
+    },
+    {
+      "id": 632196938,
+      "method": "payments.refundStarsCharge",
+      "params": [
+        {
+          "name": "user_id",
+          "type": "InputUser"
+        },
+        {
+          "name": "charge_id",
+          "type": "string"
+        }
+      ],
+      "type": "Updates"
+    },
+    {
+      "id": 3642751702,
+      "method": "payments.getStarsRevenueStats",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "dark",
+          "type": "flags.0?true"
+        },
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        }
+      ],
+      "type": "payments.StarsRevenueStats"
+    },
+    {
+      "id": 331081907,
+      "method": "payments.getStarsRevenueWithdrawalUrl",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "stars",
+          "type": "long"
+        },
+        {
+          "name": "password",
+          "type": "InputCheckPasswordSRP"
+        }
+      ],
+      "type": "payments.StarsRevenueWithdrawalUrl"
+    },
+    {
+      "id": 3520589765,
+      "method": "payments.getStarsRevenueAdsAccountUrl",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        }
+      ],
+      "type": "payments.StarsRevenueAdsAccountUrl"
+    },
+    {
+      "id": 662973742,
+      "method": "payments.getStarsTransactionsByID",
+      "params": [
+        {
+          "name": "peer",
+          "type": "InputPeer"
+        },
+        {
+          "name": "id",
+          "type": "Vector<InputStarsTransaction>"
+        }
+      ],
+      "type": "payments.StarsStatus"
     },
     {
       "id": 2418125671,
@@ -35944,6 +36973,33 @@ var SCHEMA_GLOBAL = {
         }
       ],
       "type": "Bool"
+    },
+    {
+      "id": 1827279210,
+      "method": "stories.searchPosts",
+      "params": [
+        {
+          "name": "flags",
+          "type": "#"
+        },
+        {
+          "name": "hashtag",
+          "type": "flags.0?string"
+        },
+        {
+          "name": "area",
+          "type": "flags.1?MediaArea"
+        },
+        {
+          "name": "offset",
+          "type": "string"
+        },
+        {
+          "name": "limit",
+          "type": "int"
+        }
+      ],
+      "type": "stories.FoundStories"
     },
     {
       "id": 1626764896,
