@@ -3,3 +3,4 @@ tmp
 !tmp/.gitkeep
 config.json
 current_layer.txt
+bun.lock
